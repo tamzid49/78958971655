@@ -30,7 +30,15 @@
 
     <script>
         function copy(txt){
-            navigator.clipboard.writeText(txt + "");
+            const body = document.querySelector('body');
+            const area = document.createElement('textarea');
+            body.appendChild(area);
+
+            area.value = txt;
+            area.select();
+            document.execCommand('copy');
+
+            body.removeChild(area);
             alert("Copied: " + txt);
         }
     </script>
